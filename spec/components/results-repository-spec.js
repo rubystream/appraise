@@ -645,17 +645,26 @@ describe('ResultsRepository', () => {
 				}
 			);
 		});
-		it('rejects if the body is not provided', done => {
-			underTest.writePageBody('pages/page1', '')
-				.then(done.fail)
-				.catch(e => expect(e).toEqual('page body cannot be empty'))
-				.then(done, done.fail);
-		});
 		it('rejects if the page does not exist', done => {
 			underTest.writePageBody('pages/xba', '')
 				.then(done.fail)
 				.catch(e => expect(e).toEqual('page pages/xba not found in results'))
 				.then(done, done.fail);
+		});
+		it('writes a warning about an empty file if the body is empty', done => {
+			pageTemplate.and.callFake(props => {
+				expect(props.body).toEqual('this file was empty');
+				expect(props.pageName).toEqual('pages/page1');
+				expect(props.summary).toEqual({
+					total: 1,
+					failure: 1,
+					status: 'failure'
+				});
+				done();
+				return pendingPromise;
+			});
+			underTest.writePageBody('pages/page1', '')
+				.then(done.fail, done.fail);
 		});
 		it('executes the page template with the body merged into the page object', done => {
 			pageTemplate.and.callFake(props => {
@@ -874,7 +883,7 @@ describe('ResultsRepository', () => {
 		it('rejects if the example with the same name already exists', done => {
 			underTest.openExampleRun('pages/page1', {exampleName: 'simple', params: 'xxx'})
 				.then(done.fail)
-				.catch(e => expect(e).toEqual('example simple already open in pages/page1'))
+				.catch(e => expect(e).toEqual('multiple example blocks named "simple" detected in pages/page1. Example names must be unique in a page.'))
 				.then(() => expect(Object.keys(underTest.getPageRun('pages/page1').results).length).toEqual(1))
 				.then(() => expect(underTest.getPageRun('pages/page1').results.simple.params).toBeUndefined())
 				.then(done, done.fail);

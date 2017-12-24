@@ -1,15 +1,31 @@
 # Tasks
 
-- [x] Choose a markdown rendering system (https://github.com/markdown-it)
-- [x] Choose a Node DOM manipulation system (https://github.com/cheeriojs/cheerio)
-- [x] Build local screenshots (using Chrome Headless and https://github.com/cyrus-and/chrome-remote-interface)
-- [x] Choose an image comparison system (https://github.com/mapbox/pixelmatch)
-- [x] generate a combined image if dimensions do not match, showing both images with alpha
-- [x] Add a generic layout to HTML when converting from MD 
-- [x] Add a generic template for result files
-- [x] Create an index with all test results
-- [x] Clean up templates and provide a nice layout
-- [x] documentation on key usage scenarios
+## Before beta 
+
+- [ ] hello-world project generator
+- [ ] alpha for images without matching dimensions
+- [ ] record timestamp when a page started executing, use in the result template
+- [x] Node 8
+- [ ] use pageObj.sourcePath when approving with new result instead of hard-coding the path
+- [ ] test with large images
+- [ ] test with complex page and example names
+- [ ] test with exceptions thrown throughout the test process
+- [ ] directory summaries for page folders
+- [x] skip empty files (instead of blowing up)
+- [ ] Solve cross-linking (eg replace .md in local links to .html when generating html)
+- [x] detect examples with the same name on a page
+- [ ] support `image/*` content types for content/contentType fixtures
+  - [ ] make sure we can get the right dimensions from headless chrome
+- [ ] Enable people to extend/plug easier
+  - [ ] add more parsers
+- [ ] test overlay/positioning in other browsers
+  - [ ] safari
+  - [ ] firefox
+- [x] handle gracefully cases where the expected result is provided, but the file is not present
+
+## before 1.0
+
+- [ ] AWS Lambda screenshots 
 - [ ] Make it easier to inspect/approve
   - [x] CLI Approval instructions on the results page
   - [x] CLI Approval instructions on the rendered page (for all examples)
@@ -17,7 +33,6 @@
     - [x] set view/opacity/zoom for actual/expected/diff separately
     - [ ] scale down large images so they are easier to see on the overview 
       - [ ] checkbox for original size/size to fit
-- [x] Run examples without expected outcomes (fail + show actual)
 - [ ] Distinguish between a failure and error
   - [x] record errors from fixtures
   - [x] display error as status when listing results
@@ -25,7 +40,7 @@
     - [x] thrown as exceptions
     - [ ] thrown as strings
     - [ ] rejected from a promise
-- [x] Fixture execution
+- [ ] Fixture execution
   - [x] inside node
     - [x] detect and parse example format (eg json or yaml)
     - [x] pass fixture parameters in the context
@@ -60,9 +75,6 @@
   - [ ] approving changes
   - [ ] Running tests by directly reading specs from github (eg public site, connect to a gitub repo)
   - [ ] Approving by directly committing to github? (eg for specs stored in github repos)
-- [ ] AWS Lambda screenshots 
-- [ ] Enable people to extend/plug easier
-  - [ ] add more parsers
 - [ ] Result formatters 
   - [x] JSON
   - [ ] junit
@@ -83,18 +95,8 @@
    - [ ] approve all failed examples
 
 
-## Before alpha
+# Released in Alpha
 
-- [ ] record timestamp when a page started executing, use in the result template
-- [ ] use pageObj.sourcePath when approving with new result instead of hard-coding the path
-- [ ] test with large images
-- [ ] test with complex page and example names
-- [ ] test with exceptions thrown throughout the test process
-- [ ] directory summaries for page folders
-- [ ] tabs in summary (pages/examples)
-- [ ] skip empty files (instead of blowing up)
-- [ ] Solve cross-linking (eg replace .md in local links to .html when generating html)
-- [ ] detect examples with the same name on a page
 - [x] breadcrumbs on rendered page -> links
 - [x] Start/stop chrome once per run, not once per page
 - [x] navigation on results page (breadcrumbs and page links)
@@ -105,5 +107,14 @@
 - [x] test with multiple examples in a single file
 - [x] test with multiple files
 - [x] test with files in subfolders
-
-
+- [x] Choose a markdown rendering system (https://github.com/markdown-it)
+- [x] Choose a Node DOM manipulation system (https://github.com/cheeriojs/cheerio)
+- [x] Build local screenshots (using Chrome Headless and https://github.com/cyrus-and/chrome-remote-interface)
+- [x] Choose an image comparison system (https://github.com/mapbox/pixelmatch)
+- [x] generate a combined image if dimensions do not match, showing both images with alpha
+- [x] Add a generic layout to HTML when converting from MD 
+- [x] Add a generic template for result files
+- [x] Create an index with all test results
+- [x] Clean up templates and provide a nice layout
+- [x] documentation on key usage scenarios
+- [x] Run examples without expected outcomes (fail + show actual)

@@ -20,6 +20,8 @@ This is what it will help you do in the near future:
 - Speed up visual exploratory testing by making it easier to rebuild visual components from example data/configuration
 - Run visual tests quickly/in parallel using AWS Lambda
 
+For a more detailed introduction on when Appraise might be useful and why we built it, check out the [Painless Visual Testing](https://vimeo.com/album/4897573/video/247763289) presentation from Agile Tour Vienna 2017.
+
 ## In action
 
 ![](screenshot.png)
@@ -50,6 +52,10 @@ Head over to the [AppraiseQA Chat on Gitter](https://gitter.im/AppraiseQA/Lobby)
 We've been using Appraise for a while now for developing [MindMup](https://www.mindmup.com) so it is quite usable for our usage scenarios, but it's likely that we've not covered 100% of what you need. 
 
 Assume that before version 1.0, important stuff is likely going to change in a backwards-incompatible way based on community feedback.
+
+## Contribute to Appraise
+
+Here's a list of [tasks](tasks.md) that we plan to do, so join in and take one of those! 
 
 ## License
 

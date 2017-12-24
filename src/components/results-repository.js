@@ -164,7 +164,7 @@ module.exports = function ResultsRepository(config, components) {
 			return Promise.reject(`page ${pageName} not found in results`);
 		};
 		if (!pageBody) {
-			return Promise.reject('page body cannot be empty');
+			pageBody = 'this file was empty';
 		}
 		return templateRepository.get('page')
 			.then(template => template(mergeProperties({body: pageBody}, pageObj)))
@@ -193,7 +193,7 @@ module.exports = function ResultsRepository(config, components) {
 			return Promise.reject('example details must contain exampleName');
 		}
 		if (pageObj.results[exampleName]) {
-			return Promise.reject(`example ${exampleName} already open in ${pageName}`);
+			return Promise.reject(`multiple example blocks named "${exampleName}" detected in ${pageName}. Example names must be unique in a page.`);
 		}
 		if (pageObj.summary) {
 			return Promise.reject(`page run ${pageName} already closed`);
